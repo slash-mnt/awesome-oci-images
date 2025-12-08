@@ -5,6 +5,10 @@ on:
     tags:
       - '*'   # Trigger on every tag
 
+permissions:
+  contents: read           # required by actions/checkout
+  security-events: write   # required by upload-sarif to GitHub Security
+
 env:
   REGISTRY: docker.io
   NAMESPACE: slashmnt
