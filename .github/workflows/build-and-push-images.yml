@@ -117,6 +117,9 @@ jobs:
           context: ./${{ needs.meta.outputs.image }}
           file: ./${{ needs.meta.outputs.image }}/Containerfile
           push: true
+          sbom: true
+          provenance: true
+          attests: type=sbom,generator=docker/scout-sbom-indexer:latest
           platforms: linux/amd64,linux/arm64
           tags: |
             ${{ env.NAMESPACE }}/${{ needs.meta.outputs.image }}:${{ needs.meta.outputs.version }}
