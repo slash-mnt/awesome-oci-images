@@ -1,0 +1,29 @@
+FROM alpine:3.22
+
+# Enable community repository
+RUN echo "https://dl-cdn.alpinelinux.org/alpine/v3.22/community" >> /etc/apk/repositories
+
+# Install binaries as root (build phase)
+RUN apk upgrade && \
+    apk add --update --no-cache bash curl skopeo kubectl jq && \
+    addgroup -S krar && \
+    adduser -S -G krar krar
+
+WORKDIR /src
+
+ENV KRAR_NAMESPACES_ALL=true \
+    KRAR_MODE=rollout \
+    KRAR_DRY_RUN=false \
+    KRAR_LABEL_DOMAIN=krar.slash-mnt.com \
+    KRAR_LABEL_NAME=rollout-policy
+
+COPY ./run.sh /src/run.sh
+
+# Ensure the non-root user can execute the script
+RUN chown -R krar:krar /src && \
+    chmod +x /src/run.sh
+
+# Drop privileges
+USER krar
+
+CMD ["/src/run.sh"]
