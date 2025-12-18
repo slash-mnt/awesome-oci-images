@@ -52,7 +52,7 @@ You can pull an image directly from your OCI registry (public or hosted) using s
 
 ```bash
 # Example for pulling an image
-docker pull docker.io/slashmnt/<image-name>:<tag>
+podman pull docker.io/slashmnt/<image-name>:<tag>
 ```
 
 or reference it in Kubernetes manifests:
@@ -120,3 +120,4 @@ See the `LICENSE` file for full license terms.
 ## Credits
 
 Maintained by SLASH MNT — providing tools and infrastructure for cloud-native engineering and secure systems.
+
