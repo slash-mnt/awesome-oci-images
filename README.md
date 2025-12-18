@@ -120,8 +120,3 @@ See the `LICENSE` file for full license terms.
 ## Credits
 
 Maintained by SLASH MNT — providing tools and infrastructure for cloud-native engineering and secure systems.
-
-## References
-
-* Open Container Initiative Image Specification — https://opencontainers.org/specs/
-* OCI artifacts and modern registries — https://oneuptime.com/blog/post/oci-artifacts-explained/view
